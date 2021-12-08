@@ -1,5 +1,5 @@
 ---
-title: "C# 실습 준비"
+title: "Ch 1. C# 실습 준비"
 excerpt: "Console 창에 텍스트 컬러를 설정하고 프레임을 관리하는 방법을 알아보자"
 
 categories:
