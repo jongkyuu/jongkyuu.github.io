@@ -21,6 +21,8 @@ last_modified_at: 2021-12-19
 - [Google Font](https://fonts.google.com/)
 - [눈누](https://noonnu.cc/index)
 
+### 눈누에서 폰트 가져오기
+
 눈누에서 원하는 폰트를 클릭하면 웹 폰트로 사용이라는 부분이 있는데 여기 내용을 임포트해야 한다.
 
 ```
@@ -32,6 +34,24 @@ last_modified_at: 2021-12-19
 }
 ```
 
+@font-face 적용하는 방법 찾아보기
+
+### Google Font에서 폰트 가져오기
+
+![](2021-12-20-23-14-16.png)
+
+- CSS에서 Import 하려면 @import 클릭하고 내용을 코드로 복사
+
 ```
-@import url
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
+</style>
+```
+
+- HTML에서 Import 하려면 \<link\> 클릭하고 내용을 코드로 복사
+
+```
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
 ```
