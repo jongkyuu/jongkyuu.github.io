@@ -40,18 +40,23 @@ last_modified_at: 2021-12-19
 
 ![](2021-12-20-23-14-16.png)
 
-- CSS에서 Import 하려면 @import 클릭하고 내용을 코드로 복사
+variable.scssPermalink
+$serif: "Coming Soon", Georgia, Times, serif !default;
+$sans-serif: "Iropke Batang", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
+"Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
+$monospace: "Nanum Gothic Coding", Monaco, Consolas, "Lucida Console", monospace !default;
+$cute: "Cafe24Oneprettynight" !default;
+내가 사용하고 있는 minimal-mistake 테마는 📜_variable.scss 파일에 전체적인 css 파일들이 사용할 “전역 변수”를 한데 모아 선언하고 있다. $serif, $sans-serif, $monospace 는 minimal-mistake 자체에서 원래 있던 변수이고 $cute는 내가 만든 변수이다.(대충 지었다..) 이 변수에 위에서 알아낸 “폰트 이름”들을 맨 왼쪽에 적어준다. 왼쪽에 적힌 폰트일 수록 우선순위를 높게 설정해주는 것이기 때문에 폰트가 블로그에 반영되기 위해선 가장 왼쪽에 써주어야 한다.
 
-```
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
-</style>
-```
+내가 설정한 변수로 예를 들자면
 
-- HTML에서 Import 하려면 \<link\> 클릭하고 내용을 코드로 복사
+font-family: $serif;
+이 CSS 영역의 폰트는 “Coming Soon” 폰트가 될 것이고
 
-```
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
-```
+font-family: $monospace;
+이 CSS 영역의 폰트는 “Nanum Gothic Coding” 폰트가 될 것이고
+
+font-family: $cute;
+이 CSS 영역의 폰트는 “Cafe24Oneprettynight” 폰트가 될 것이다!
+
+이렇게 변수로 대입하지 않고 직접 font-family: "Roboto"; 이런식으로 해줘도 상관없다!
