@@ -67,7 +67,7 @@ main:
 
 상단 메뉴바의 링크이다. 예를들어 Quick-Start Guide를 누르면 Minimal Mistakes 문서 페이지로 이동한다.
 
-### ui-text.ymlPermalink
+### ui-text.yml
 
 각국 언어별로 어떤 텍스트로 표시되는지를 나열한 문서이다.
 
@@ -121,7 +121,7 @@ main:
 |  └── 📝toc.html                #
 ```
 
-### analytics-providersPermalink
+### analytics-providers
 
 어떤 analytics 플랫폼을 사용할 것인지.
 
@@ -144,3 +144,127 @@ analytics:
 ```
 
 provider에 사용할 analytics에 맞는 html 파일 이름을 문자열로 적어준다. 구글 analytics 말고 다른 analytics를 사용하려면 provider: custom을 한 후 custom.html에 그 analytics의 embed code를 추가해 준다.
+
+### comments-providers
+
+어떤 댓글 플랫폼을 사용할 것인지. ex) disqus, facebook, …
+마찬가지로 custom.html은 \_includes/comments-providers에 없는 댓글 플랫폼을 사용하려 할 때 여기에 embeded code를 추가해주자. 플랫폼별로 사용법
+
+### footer, head
+
+폴더에 들어있는 cumtom.html에 footer와 head의 커스터마이징 내용을 적어주면 될 것 같다. favicon 파비콘 삽입 태그를 이 \_includes/head/custom.html 에 삽입해주었다.
+
+### search
+
+어떤 검색 엔진을 사용할 것인지. 우선 블로그 내 검색 기능을 사용하려면 \_config.yml에 search: true값으로 변경해주어야 한다. 검색 엔진 별 자세한 설명
+
+```
+├── 📁analytics-providers
+| ├── 📝algolia-search-scripts.html # algoria 검색 엔진
+| ├── 📝google-search-scripts.html # Google 검색 엔진
+| ├── 📝lunar-search-scripts.html # Lunar 검색 엔진
+| └── 📝search_form.html #
+```
+
+디폴트 검색 엔진은 Lunar 이며 Google Custom Search Engine에서 내 입맛대로 검색 엔진을 만들 수 있다. 검색 기능을 사용하려면 \_config.yml에 search_provider값을 추가하면 된다.
+
+### Helpers
+
+[설명 링크](https://mmistakes.github.io/minimal-mistakes/docs/helpers/)
+
+### feature_row
+
+마치 갤러리처럼 여러개의 사진들을 한 줄로 나열된 형태. Gallery와의 차이점이 있다면 사진마다 제목과 설명 텍스트가 달려 있음. 머릿말에 아래와 같은 정보가 담긴 feature_row 변수를 추가하고 포스트 본문에서 Liquid 태그를 { { % include feature_row % } } 이렇게 적어주면 그 자리에 feature_row가 출력될 것이다.
+
+```
+feature_row: # 3개의 이미지와 각가의 텍스트가 담긴 feature_row
+- image_path: /assets/images/unsplash-gallery-image-1-th.jpg
+  alt: "placeholder image 1"
+  title: "Placeholder 1"
+  excerpt: "This is some sample content that goes here with **Markdown** formatting."
+- image_path: /assets/images/unsplash-gallery-image-2-th.jpg
+  alt: "placeholder image 2"
+  title: "Placeholder 2"
+  excerpt: "This is some sample content that goes here with **Markdown** formatting."
+  url: "#test-link"
+  btn_label: "Read More"
+  btn_class: "btn--inverse"
+- image_path: /assets/images/unsplash-gallery-image-3-th.jpg
+  title: "Placeholder 3"
+  excerpt: "This is some sample content that goes here with **Markdown** formatting."
+```
+
+### gallery
+
+feature_row와 다르게 텍스트 없이 한 줄에 사진 여러개만 있다. feature_row와 똑같은 방법으로 쓰면 된다. 머릿말에 각 이미지들의 url, path, alt, title 정보가 담긴 gallery 변수 지정해주고 본문에서 Liquid 태그로 출력.
+
+### group-by-array
+
+[사용방법 링크](https://github.com/mushishi78/jekyll-group-by-array)
+
+### nav_list
+
+메뉴 상단바 리스트. 아래와 같이 \_data 폴더에 있는 navigation.yml 에 예를 들어 foo라는 이름의 네비게이션을 작성한다고 가정하자. Parent Link 1, 2라는 이름의 페이지가 상단 메뉴바에 생길 것이고 각각의 자식 페이지는 child-1,2-page, child-1,2,3-page가 될 것이다. 이러고 포스트 머리말에 side bar : nav : "foo" 혹은 포스트 본문에 { % include nav_list nav="foo" % }을 써주면 foo라는 이름으로 지정한 네비게이션이 삽입될 것이다.
+
+```
+# \_data/navigation.yml
+foo:
+
+- title: "Parent Link 1"
+  url: /parent-1-page-url/
+  children:
+
+  - title: "Child Link 1"
+    url: /child-1-page-url/
+  - title: "Child Link 2"
+    url: /child-2-page-url/
+
+- title: "Parent Link 2"
+  url: /parent-2-page-url/
+  children: - title: "Child Link 1"
+  url: /child-1-page-url/ - title: "Child Link 2"
+  url: /child-2-page-url/ - title: "Child Link 3"
+  url: /child-3-page-url/
+```
+
+### toc
+
+toc 목차를 사용하고 싶다면 머릿말에 toc: true를 지정
+
+### video
+
+Youtube, Vimeo 같은 비디오를 embeding 하는 helper. 유튜브의 경우 영상의 긴 url 말고 짧은 url을 따서 url의 뒷부분을 id로 넣어준다.
+
+```
+예를 들어 https://youtu.be/XsxDH4HcOWA url을 가진 유튜브 영상이라면
+
+{% include video id="XsxDH4HcOWA" provider="youtube" %}
+
+_include 파일에 있는 video helper 코드를 재사용하여 삽입
+
+```
+
+\_include 파일에 있는 video helper 코드를 재사용하여 삽입한다. helper내의 id, provider 값은 각각 짧은 url과 youtube로 설정해준다. `?start=110`을 붙여주면 유튜브 영상이 110초부터 재생되게끔 할 수 있다.  
+Vimeo와 Google Drive에 있는 영상도 비슷한 방법으로 embeding 하면 된다.
+
+### figure
+
+한 개의 이미지 요소를 생성한다.
+
+```
+{% include figure image_path="/assets/images/unsplash-image-10.jpg" alt="this is a placeholder image" caption="This is a figure caption." %}
+```
+
+image_path는 필수이며 alt와 caption은 옵션이다. Liquid 태그로 include figure 이미지를 불러오는 역할을 하는 HTML 코드가 담겨있는 figure가 불러와진다.
+
+### analytics.html
+
+```
+analytics:
+provider: "google-gtag"
+google:
+tracking_id: "UA-1234567-8"
+anonymize_ip: false # default
+```
+
+이렇게 yml 형식으로 써서 analytics.html에 애널리틱스의 provider 정보와 tracking_id, anonymize_ip 정보를 넘겨준다.
