@@ -268,3 +268,24 @@ anonymize_ip: false # default
 ```
 
 이렇게 yml 형식으로 써서 analytics.html에 애널리틱스의 provider 정보와 tracking_id, anonymize_ip 정보를 넘겨준다.
+
+### archive-single.html
+
+```
+{% include archive-single.html %}
+```
+
+포스트 페이지들 링크 모아둔 아카이브 페이지에서 각 포스트(싱글페이지) 링크가 어떻게 보여질지에 대한 문서이다.
+
+### author-profile-custom-links.htmlPermalink
+
+```
+<!--예시-->
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+```
+
+minimal mistakes 에서 제공하는 author profile link는 Github, 메일, Facebook 등이 있다.
