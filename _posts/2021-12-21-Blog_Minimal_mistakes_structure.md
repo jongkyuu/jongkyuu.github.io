@@ -289,3 +289,11 @@ anonymize_ip: false # default
 ```
 
 minimal mistakes 에서 제공하는 author profile link는 Github, 메일, Facebook 등이 있다.
+
+### breadcrumbs.htmlPermalink
+
+최상위문서/상위문서/해당포스트 이런식의 계층 구조로 해당 페이지의 상대적 위치를 보여준다. 이렇게 breadcrumbs 를 구현할 수 있는 html 문서가 있으니 \_config.yml혹은 각 포스트 md 파일 머릿말에 breadcrumb: true 해주면 나타난다.
+
+### browser-upgrade.htmlPermalink
+
+IE9 브라우저로 접속할 경우 브라우저를 업그레이드 하라는 블록이 나타나도록 해주는 html 문서
