@@ -297,3 +297,7 @@ minimal mistakes 에서 제공하는 author profile link는 Github, 메일, Face
 ### browser-upgrade.htmlPermalink
 
 IE9 브라우저로 접속할 경우 브라우저를 업그레이드 하라는 블록이 나타나도록 해주는 html 문서
+
+### single-page > page\_\_taxonomy.htmlPermalink
+
+single-page는 포스트 하나를 열었을 때 보이는 본문을 의미(추측)하고 post는 포스트들을 모아둔 archive page내에서 보여지는 각각의 포스트를 의미하는 것 같다.
