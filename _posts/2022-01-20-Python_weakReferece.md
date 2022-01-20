@@ -158,3 +158,28 @@ Object(2520efed518) is being destroyed.
 
 약한 참조는 위와 같이 한 개 이상의 객체가 참조 순환 고리를 만드는 경우에 메모리 누수를 방지하기 위해서 주로 사용한다.    
 클래스 인스턴스의 속성이 만약 다른 클래스의 인스턴스를 참조하거나, 동일 클래스의 다른 인스턴스를 참조할 가능성이 높다면 메모리 누수가 발생할 가능성이 매우 높은 지점이 된다. 대부분의 파이썬 프로그램의 생애주기는 짧기 때문에 문제가 되지 않을 수 있다. 하지만 서버와 같이 생애 주기가 길거나, 매우 많은 인스턴스를 생성하고 연결하는 동작을 하는 경우에 메모리 누수가 큰 문제가 될 수 있다.
+
+<br>
+
+### @property를 사용한 코드 개선
+
+Foo 의 경우와 같이 커스텀 클래스 인스턴스를 속성을 사용하는 부분이 많다면 매번 weakref.ref(x) 를 쓰거나, obj.attr() 과 같이 호출하는 식의 코드를 작성하는 것은 피곤한 일이다. 객체 프로퍼티를 사용해서 접근자를 호출하는 식으로 우회하여 이 문제를 개선할 수 있다.
+
+```python
+import weakref
+class ConvenientFoo:
+  def __init__(self, value):
+    self.value = value
+    self._friend = None
+ 
+  @property
+  def friend(self):
+    if self._friend is None:
+      return None
+    return self._friend()
+  @friend.setter
+  def friend(self, target):
+    self._friend = weakref.ref(target)
+  def __del__(self):
+    print(f'{id(self):x} is being destroyed.') 
+```
