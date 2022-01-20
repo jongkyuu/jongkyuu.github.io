@@ -95,3 +95,12 @@ print(james.age)    # 인스턴스.속성 형식으로 값을 가져옴
 >>>
 20
 ```
+
+
+
+### 참조
+
+- https://docs.python.org/3/library/functions.html#property
+- https://www.nemonein.xyz/2021/03/4980/
+- https://velog.io/@uoayop/3-3.-Propertygetter-setter
+- https://velog.io/@kksh1205/python-%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EA%B3%BC-property-%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0
