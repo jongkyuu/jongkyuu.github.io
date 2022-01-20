@@ -66,3 +66,32 @@ getter, setter 메서드의 이름을 잘 보면 둘다 age입니다. 그리고 
 james.age = 20      # 인스턴스.속성 형식으로 접근하여 값 저장
 print(james.age)    # 인스턴스.속성 형식으로 값을 가져옴
 ```
+
+<br>
+
+### @perperty를 데이터 검증에 활용
+
+@property를 사용해서 age에 대한 검증을 수행할 수 있다.
+
+```python
+class Person:
+    def __init__(self):
+        self.__age = 0
+
+    @property
+    def age(self):           # getter
+        return self.__age
+
+    @age.setter
+    def age(self, value):    # setter
+        if age <= 0 :
+            raise ValueError("Age는 0보다 큰 값이어야 합니다")
+        self.__age = value
+
+james = Person()
+james.age = 20      # 인스턴스.속성 형식으로 접근하여 값 저장
+print(james.age)    # 인스턴스.속성 형식으로 값을 가져옴
+
+>>>
+20
+```
